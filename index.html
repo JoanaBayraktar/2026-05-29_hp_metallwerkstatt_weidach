@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metallwerkstatt Weidach – Schlossermeister Feldkirchen-Westerham</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/hind/v18/5aU69_a8oxmIdGh4BDGwgDJm_A.woff2') format('woff2');
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:      #ffffff;
+      --off:        #f4f7fb;
+      --light:      #e8eef5;
+      --border:     #d4dde8;
+      --mid:        #7a8fa6;
+      --text:       #2c3540;
+      --dark:       #1a2535;
+      --blue:       #3192d0;
+      --blue-dark:  #2478b5;
+      --blue-faint: #f0f7fc;
+      --font-head:  Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      --font-body:  'Hind', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ──────────────────────────────────────────── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 72px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    .logo { text-decoration: none; display: flex; align-items: center; }
+    .logo img { height: 44px; width: auto; display: block; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav a {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--blue); }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+
+    /* ─── HERO ────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .hero-bg-img {
+      position: absolute;
+      inset: 0;
+      background-image: url('images/8_MW_Treppengelaender.jpg');
+      background-size: cover;
+      background-position: center 30%;
+      opacity: 0.72;
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        105deg,
+        rgba(26,37,53,0.65) 0%,
+        rgba(26,37,53,0.38) 55%,
+        rgba(26,37,53,0.10) 100%
+      );
+    }
+
+    .shape {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .shape-1 {
+      width: 500px; height: 500px;
+      border: 1px solid rgba(49,146,208,0.15);
+      top: -80px; right: -80px;
+      animation: spinSlow 40s linear infinite;
+    }
+
+    .shape-2 {
+      width: 300px; height: 300px;
+      border: 1px solid rgba(49,146,208,0.1);
+      bottom: 60px; right: 200px;
+      animation: spinSlow 30s linear infinite reverse;
+    }
+
+    .shape-line {
+      width: 800px; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(49,146,208,0.4), transparent);
+      top: 50%; right: -100px;
+      transform: rotate(-12deg);
+      animation: slideH 8s ease-in-out infinite alternate;
+    }
+
+    .shape-dot {
+      width: 6px; height: 6px;
+      background: var(--blue);
+      border-radius: 50%;
+      top: 38%; right: 28%;
+      box-shadow: 0 0 20px rgba(49,146,208,0.8);
+      animation: blink 3s ease-in-out infinite;
+    }
+
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    @keyframes slideH {
+      from { transform: rotate(-12deg) translateX(-60px); }
+      to   { transform: rotate(-12deg) translateX(60px); }
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.35; transform: scale(1.8); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 48px 80px;
+      width: 100%;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 24px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 36px; height: 2px;
+      background: var(--blue);
+    }
+
+    .hero-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(3rem, 6.5vw, 6.2rem);
+      line-height: 1.0;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .hero-title .blue { color: var(--blue); }
+
+    .hero-tagline {
+      font-family: var(--font-body);
+      font-size: 1.25rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.75);
+      letter-spacing: 0.05em;
+      margin-bottom: 44px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* ─── TICKER ─────────────────────────────────────────── */
+    .ticker-wrap {
+      background: var(--blue);
+      overflow: hidden;
+      padding: 13px 0;
+    }
+
+    .ticker {
+      display: inline-flex;
+      animation: ticker 22s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker span {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      padding: 0 28px;
+    }
+
+    .ticker-sep { color: rgba(255,255,255,0.4); }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION BASE ───────────────────────────────────── */
+    section { padding: 96px 48px; }
+    #ueber-uns { scroll-margin-top: 80px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    button { border: none; cursor: pointer; background: none; }
+
+    .section-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .section-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px; height: 2px;
+      background: var(--blue);
+    }
+
+    .section-title {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: clamp(2rem, 3.8vw, 3.4rem);
+      line-height: 1.05;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 500px;
+      line-height: 1.75;
+    }
+
+    /* ─── LEISTUNGEN ─────────────────────────────────────── */
+    .services-section { background: var(--white); }
+
+    .services-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 56px;
+      gap: 40px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .service-card {
+      background: var(--white);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.25s, transform 0.25s;
+      cursor: default;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--blue);
+      transition: width 0.4s;
+    }
+
+    .service-card:hover { background: var(--blue-faint); transform: translateY(-3px); }
+    .service-card:hover::after { width: 100%; }
+
+    .service-icon {
+      font-size: 2.1rem;
+      color: var(--blue);
+      margin-bottom: 18px;
+      display: block;
+      line-height: 1;
+    }
+
+    .service-name {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .service-desc {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+
+    .service-num {
+      position: absolute;
+      top: 14px; right: 18px;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 2.8rem;
+      color: var(--light);
+      line-height: 1;
+      transition: color 0.3s;
+    }
+
+    .service-card:hover .service-num { color: rgba(49,146,208,0.1); }
+
+    /* ─── PROZESS ────────────────────────────────────────── */
+    .process-section {
+      background: var(--off);
+      padding: 96px 0 96px 48px;
+      overflow: hidden;
+    }
+
+    .process-header {
+      max-width: 1200px;
+      padding-right: 48px;
+      margin-bottom: 44px;
+    }
+
+    .process-scroll-wrap {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .process-scroll-wrap::-webkit-scrollbar { display: none; }
+    .process-scroll-wrap:active { cursor: grabbing; }
+
+    .process-strip {
+      display: flex;
+      gap: 16px;
+      padding-right: 48px;
+      width: max-content;
+      align-items: stretch;
+    }
+
+    .process-card {
+      width: 320px;
+      height: 440px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--dark);
+    }
+
+    .process-card-img {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      opacity: 0.48;
+      transition: opacity 0.4s, transform 0.5s;
+    }
+
+    .process-card:hover .process-card-img {
+      opacity: 0.62;
+      transform: scale(1.05);
+    }
+
+    .process-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,37,53,0.96) 0%,
+        rgba(26,37,53,0.45) 55%,
+        rgba(26,37,53,0.15) 100%
+      );
+    }
+
+    .process-card-num {
+      position: absolute;
+      top: 22px; left: 26px;
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--blue);
+      opacity: 0.55;
+    }
+
+    .process-card-content {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 26px 28px;
+    }
+
+    .process-card-title {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .process-card-desc {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .process-cta-card {
+      width: 280px;
+      height: 440px;
+      flex-shrink: 0;
+      background: var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .process-cta-card::before {
+      content: '';
+      position: absolute;
+      width: 340px; height: 340px;
+      border: 1px solid rgba(255,255,255,0.15);
+      top: -100px; right: -100px;
+      animation: spinSlow 30s linear infinite;
+    }
+
+    .process-cta-card::after {
+      content: '';
+      position: absolute;
+      width: 200px; height: 200px;
+      border: 1px solid rgba(255,255,255,0.1);
+      bottom: -60px; left: -60px;
+      animation: spinSlow 20s linear infinite reverse;
+    }
+
+    .process-cta-inner {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .process-cta-label {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 1.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 28px;
+    }
+
+    .btn-white {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--blue);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 14px 26px;
+      transition: background 0.2s, transform 0.2s;
+      border: none;
+    }
+
+    .btn-white:hover { background: var(--off); transform: translateY(-2px); }
+
+    /* ─── ÜBER UNS ───────────────────────────────────────── */
+    .about-section { background: var(--dark); padding: 0; }
+
+    .about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+      min-height: 460px;
+    }
+
+    .about-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .about-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26,37,53,0.45) 0%, rgba(26,37,53,0.15) 100%);
+    }
+
+    .about-photo-badge {
+      position: absolute;
+      bottom: 32px; right: 32px;
+      background: var(--blue);
+      padding: 18px 26px;
+      text-align: center;
+    }
+
+    .badge-year {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 2.6rem;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .badge-sub {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      margin-top: 4px;
+      display: block;
+    }
+
+    .about-text {
+      padding: 68px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-text .section-eyebrow { color: var(--blue); }
+    .about-text .section-eyebrow::before { background: var(--blue); }
+    .about-text .section-title { color: var(--white); }
+
+    .about-owner {
+      font-family: var(--font-head);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 3px;
+    }
+
+    .about-role {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.38);
+      margin-bottom: 26px;
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.62);
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    .about-body em { font-style: normal; color: rgba(255,255,255,0.9); }
+
+    .cert-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 12px;
+      padding: 11px 18px;
+      border: 1px solid rgba(49,146,208,0.35);
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .cert-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; }
+
+    /* ─── GALERIE ────────────────────────────────────────── */
+    .gallery-section {
+      background: var(--off);
+      padding: 96px 0 96px 48px;
+      overflow: hidden;
+    }
+
+    .gallery-header {
+      max-width: 1200px;
+      padding-right: 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 44px;
+    }
+
+    .btn-outline-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 22px;
+      transition: border-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-outline-dark:hover { border-color: var(--blue); color: var(--blue); }
+
+    .gallery-scroll-wrap {
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .gallery-scroll-wrap::-webkit-scrollbar { display: none; }
+    .gallery-scroll-wrap:active { cursor: grabbing; }
+
+    .gallery-strip {
+      display: flex;
+      gap: 16px;
+      padding-right: 48px;
+      width: max-content;
+      align-items: flex-start;
+    }
+
+    .gallery-item {
+      width: 300px;
+      height: 380px;
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      background: var(--light);
+    }
+
+    .gallery-item:nth-child(even) { margin-top: 44px; }
+
+    .gallery-item img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.06); }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,37,53,0.88) 0%, rgba(26,37,53,0.0) 55%);
+      opacity: 0;
+      transition: opacity 0.35s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 22px;
+    }
+
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    .gallery-label {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .gallery-sub {
+      font-family: var(--font-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-top: 3px;
+    }
+
+    /* ─── KONTAKT ─────────────────────────────────────────── */
+    .contact-section { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left .section-title { margin-bottom: 16px; }
+
+    .contact-left p {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.75;
+      margin-bottom: 32px;
+    }
+
+    .contact-info-block {
+      background: var(--off);
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px 32px;
+    }
+
+    .info-item {}
+
+    .info-label {
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 3px;
+    }
+
+    .info-value {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* Form */
+    .contact-form {}
+
+    .form-group {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-group:first-child { border-top: 1px solid var(--border); }
+
+    .form-group label {
+      display: block;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      padding: 15px 0 0;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--text);
+      padding: 6px 0 13px;
+      appearance: none;
+    }
+
+    .form-group textarea { height: 90px; resize: none; }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 28px;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: var(--dark);
+      padding: 60px 48px 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 44px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 28px;
+    }
+
+    .footer-logo img { height: 36px; filter: brightness(0) invert(1); opacity: 0.8; }
+
+    .footer-brand p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.38);
+      line-height: 1.75;
+      margin-top: 16px;
+      max-width: 270px;
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+
+    .footer-col ul li a {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.42);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--blue); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.22);
+      font-family: var(--font-head);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.22);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-bottom a:hover { color: var(--blue); }
+    .footer-links { display: flex; gap: 24px; }
+
+    /* ─── BURGER MENÜ ───────────────────────────────────── */
+    .burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 6px;
+      width: 40px;
+      height: 40px;
+      padding: 4px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .burger span {
+      display: block;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+      transform-origin: center;
+    }
+
+    .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--white);
+      border-top: 2px solid var(--blue);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      z-index: 99;
+      flex-direction: column;
+      padding: 8px 0 16px;
+    }
+
+    .mobile-nav.open { display: flex; }
+
+    .mobile-nav a {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--light);
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+      background: var(--blue);
+      color: var(--white);
+      margin: 8px 16px 0;
+      text-align: center;
+    }
+
+    .mobile-nav a:hover { color: var(--blue); }
+    .mobile-nav a:last-child:hover { background: var(--blue-dark); color: var(--white); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1060px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; }
+      .about-photo { min-height: 320px; }
+      .contact-grid { grid-template-columns: 1fr; gap: 52px; }
+      .footer-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 700px) {
+      header { padding: 0 20px; }
+      nav { display: none; }
+      .burger { display: flex; }
+      section { padding: 60px 20px; }
+      .gallery-section { padding: 60px 0 60px 20px; }
+      .process-section { padding: 60px 0 60px 20px; }
+      .process-header { padding-right: 20px; }
+      .hero-content { padding: 100px 20px 60px; }
+      .hero-title { font-size: 2.4rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .footer-top { grid-template-columns: 1fr; }
+      .contact-info-block { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+  <a href="#" class="logo">
+    <img src="images/logo.png" alt="Metallwerkstatt Weidach" />
+  </a>
+  <nav>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ueber-uns">Über uns</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#kontakt" class="nav-cta">Kontakt</a>
+  </nav>
+  <button class="burger" id="burgerBtn" aria-label="Menü öffnen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#leistungen">Leistungen</a>
+  <a href="#ueber-uns">Über uns</a>
+  <a href="#galerie">Galerie</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg-img"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="shape shape-1"></div>
+  <div class="shape shape-2"></div>
+  <div class="shape shape-line"></div>
+  <div class="shape shape-dot"></div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Metall aus<br>
+      Meisterhand<br>
+      in <span class="blue">Westerham</span>
+    </h1>
+    <p class="hero-tagline">individuell &nbsp;·&nbsp; verlässlich &nbsp;·&nbsp; flexibel</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-primary">Projekt anfragen</a>
+      <a href="#galerie" class="btn-secondary">Galerie ansehen</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ TICKER ═══════════ -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Metallbau</span><span class="ticker-sep">✦</span>
+    <span>Schlosserarbeiten</span><span class="ticker-sep">✦</span>
+    <span>Schweißarbeiten</span><span class="ticker-sep">✦</span>
+    <span>Edelstahl</span><span class="ticker-sep">✦</span>
+    <span>Aluminium</span><span class="ticker-sep">✦</span>
+    <span>Garagentore</span><span class="ticker-sep">✦</span>
+    <span>Zäune</span><span class="ticker-sep">✦</span>
+    <span>Carports</span><span class="ticker-sep">✦</span>
+    <span>Verglasungen</span><span class="ticker-sep">✦</span>
+    <span>Reparaturen</span><span class="ticker-sep">✦</span>
+    <span>Metallbau</span><span class="ticker-sep">✦</span>
+    <span>Schlosserarbeiten</span><span class="ticker-sep">✦</span>
+    <span>Schweißarbeiten</span><span class="ticker-sep">✦</span>
+    <span>Edelstahl</span><span class="ticker-sep">✦</span>
+    <span>Aluminium</span><span class="ticker-sep">✦</span>
+    <span>Garagentore</span><span class="ticker-sep">✦</span>
+    <span>Zäune</span><span class="ticker-sep">✦</span>
+    <span>Carports</span><span class="ticker-sep">✦</span>
+    <span>Verglasungen</span><span class="ticker-sep">✦</span>
+    <span>Reparaturen</span><span class="ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- ═══════════ LEISTUNGEN ═══════════ -->
+<section class="services-section" id="leistungen">
+  <div class="container">
+    <div class="services-header">
+      <div>
+        <div class="section-eyebrow">Leistungen</div>
+        <h2 class="section-title">Was wir<br>für Sie bauen</h2>
+      </div>
+      <p class="section-desc">Von der Einzelanfertigung bis zur Serienfertigung – präzise, termingerecht und mit höchstem Qualitätsanspruch.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <span class="service-num">01</span>
+        <i class="fa-solid fa-industry service-icon"></i>
+        <div class="service-name">Metallbau</div>
+        <div class="service-desc">Individuelle Stahlkonstruktionen nach Maß – robust, präzise und dauerhaft.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">02</span>
+        <i class="fa-solid fa-fire-flame-curved service-icon"></i>
+        <div class="service-name">Schweißarbeiten</div>
+        <div class="service-desc">MIG, MAG und WIG – zertifiziert und normgerecht nach EN 1090.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">03</span>
+        <i class="fa-solid fa-grip-lines service-icon"></i>
+        <div class="service-name">Zäune &amp; Geländer</div>
+        <div class="service-desc">Einfriedungen und Treppengeländer in Stahl, Edelstahl oder Aluminium.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">04</span>
+        <i class="fa-solid fa-warehouse service-icon"></i>
+        <div class="service-name">Garagentore</div>
+        <div class="service-desc">Garagen-, Garten- und Schiebetore – maßgefertigt und sicher.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">05</span>
+        <i class="fa-solid fa-car-side service-icon"></i>
+        <div class="service-name">Carports</div>
+        <div class="service-desc">Überdachungen in Stahl und Aluminium – robust, wetterbeständig, individuell.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">06</span>
+        <i class="fa-solid fa-border-all service-icon"></i>
+        <div class="service-name">Verglasungen</div>
+        <div class="service-desc">Glas-Stahl-Lösungen für Fassaden, Überdachungen und Trennwände.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">07</span>
+        <i class="fa-solid fa-medal service-icon"></i>
+        <div class="service-name">Edelstahl &amp; Alu</div>
+        <div class="service-desc">Hochwertige Materialien für repräsentative und pflegeleichte Ergebnisse.</div>
+      </div>
+
+      <div class="service-card">
+        <span class="service-num">08</span>
+        <i class="fa-solid fa-screwdriver-wrench service-icon"></i>
+        <div class="service-name">Reparaturen</div>
+        <div class="service-desc">Schnelle und zuverlässige Wartung und Reparatur von Toren, Türen und Konstruktionen.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROZESS ═══════════ -->
+<section class="process-section">
+  <div class="process-header">
+    <div class="section-eyebrow">So arbeiten wir</div>
+    <h2 class="section-title">Von der Idee zur Umsetzung</h2>
+  </div>
+
+  <div class="process-scroll-wrap" id="processScroll">
+    <div class="process-strip">
+
+      <div class="process-card">
+        <div class="process-card-img" style="background-image: url('images/prozess_1_beratung.jpg')"></div>
+        <div class="process-card-overlay"></div>
+        <div class="process-card-num">01</div>
+        <div class="process-card-content">
+          <div class="process-card-title">Beratung</div>
+          <div class="process-card-desc">Persönliches Gespräch und Bestandsaufnahme vor Ort.</div>
+        </div>
+      </div>
+
+      <div class="process-card">
+        <div class="process-card-img" style="background-image: url('images/prozess_2_planung.jpg')"></div>
+        <div class="process-card-overlay"></div>
+        <div class="process-card-num">02</div>
+        <div class="process-card-content">
+          <div class="process-card-title">Planung</div>
+          <div class="process-card-desc">Technische Zeichnung und verbindliches Angebot.</div>
+        </div>
+      </div>
+
+      <div class="process-card">
+        <div class="process-card-img" style="background-image: url('images/prozess_3_fertigung.jpg')"></div>
+        <div class="process-card-overlay"></div>
+        <div class="process-card-num">03</div>
+        <div class="process-card-content">
+          <div class="process-card-title">Fertigung</div>
+          <div class="process-card-desc">Präzise Umsetzung in unserer Werkstatt.</div>
+        </div>
+      </div>
+
+      <div class="process-card">
+        <div class="process-card-img" style="background-image: url('images/prozess_4_montage.jpg')"></div>
+        <div class="process-card-overlay"></div>
+        <div class="process-card-num">04</div>
+        <div class="process-card-content">
+          <div class="process-card-title">Montage</div>
+          <div class="process-card-desc">Saubere Montage und persönliche Übergabe.</div>
+        </div>
+      </div>
+
+      <div class="process-cta-card">
+        <div class="process-cta-inner">
+          <div class="process-cta-label">Bereit für<br>Ihr Projekt?</div>
+          <a href="#kontakt" class="btn-white">
+            Jetzt anfragen
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ÜBER UNS ═══════════ -->
+<section class="about-section" id="ueber-uns">
+  <div class="about-inner">
+    <div class="about-photo">
+      <img src="images/MW_in_Aktion_1_550.jpg" alt="Schweißarbeiten in der Werkstatt" />
+      <div class="about-photo-overlay"></div>
+      <div class="about-photo-badge">
+        <span class="badge-year">2019</span>
+        <span class="badge-sub">Gegründet</span>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-eyebrow">Über uns</div>
+      <h2 class="section-title">Qualität mit<br>Leidenschaft</h2>
+      <div class="about-owner">Florian Grießbach</div>
+      <div class="about-role">Schlossermeister · Staatlicher Preisträger · Inhaber</div>
+      <p class="about-body">
+        Die Metallwerkstatt Weidach steht für handwerkliche Exzellenz und persönlichen Service. Als zertifizierter Innungsfachbetrieb arbeiten wir nach höchsten Qualitätsstandards – jedes Projekt <em>individuell, verlässlich und flexibel.</em>
+      </p>
+      <p class="about-body">
+        Ob kleine Reparatur oder komplexe Neukonstruktion – wir beraten persönlich und realisieren mit Präzision.
+      </p>
+      <div class="cert-tag">
+        <div class="cert-dot"></div>
+        Zertifizierter Innungsfachbetrieb nach EN 1090
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ GALERIE ═══════════ -->
+<section class="gallery-section" id="galerie">
+  <div class="gallery-header">
+    <div>
+      <div class="section-eyebrow">Galerie</div>
+      <h2 class="section-title">Unsere Arbeiten</h2>
+    </div>
+  </div>
+
+  <div class="gallery-scroll-wrap" id="galleryScroll">
+    <div class="gallery-strip">
+
+      <div class="gallery-item">
+        <img src="images/1_MW_Aussenfassade.jpg" alt="Außenfassade" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Außenfassade</div>
+          <div class="gallery-sub">Anthrazit-Geländer</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/2_MW_Gelaender.jpg" alt="Edelstahlgeländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Edelstahlgeländer</div>
+          <div class="gallery-sub">Handlauf innen</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/8_MW_Treppengelaender.jpg" alt="Treppengeländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Treppengeländer</div>
+          <div class="gallery-sub">Edelstahl &amp; Holz</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/15_MW_Kueche.jpg" alt="Edelstahlküche" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Edelstahlküche</div>
+          <div class="gallery-sub">Maßanfertigung</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG-20220809-WA0033.jpg" alt="Glasgeländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Glasgeländer</div>
+          <div class="gallery-sub">Stahl &amp; Glas</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/7_MW_Bodenluke.jpg" alt="Bodenluke" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Bodenluke</div>
+          <div class="gallery-sub">Edelstahl-Riffelblech</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG-20220809-WA0008.jpg" alt="Balkongeländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Balkongeländer</div>
+          <div class="gallery-sub">Verzinkt</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/3_MW_Gelaender_2.jpg" alt="Geländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Geländer</div>
+          <div class="gallery-sub">Edelstahl</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/4_MW_Gelaender_3.jpg" alt="Geländer" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Geländer</div>
+          <div class="gallery-sub">Edelstahl</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG-20220809-WA0024.jpg" alt="Metallarbeit" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Metallarbeit</div>
+          <div class="gallery-sub">Maßanfertigung</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG-20220809-WA0025.jpg" alt="Metallarbeit" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Metallarbeit</div>
+          <div class="gallery-sub">Maßanfertigung</div>
+        </div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="images/IMG-20220809-WA0041.jpg" alt="Metallarbeit" />
+        <div class="gallery-overlay">
+          <div class="gallery-label">Metallarbeit</div>
+          <div class="gallery-sub">Maßanfertigung</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ KONTAKT ═══════════ -->
+<section class="contact-section" id="kontakt">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-left">
+        <div class="section-eyebrow">Kontakt</div>
+        <h2 class="section-title">Projekt<br>anfragen</h2>
+        <p>Schildern Sie uns kurz Ihr Vorhaben – wir melden uns persönlich bei Ihnen. Kein Callcenter, direkter Kontakt mit dem Meister.</p>
+
+        <div class="contact-info-block">
+          <div class="info-item">
+            <div class="info-label">Adresse</div>
+            <div class="info-value">Weidach<br>83620 Feldkirchen-Westerham</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">E-Mail</div>
+            <div class="info-value">info@metallwerkstatt-weidach.de</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Öffnungszeiten</div>
+            <div class="info-value">Mo – Fr<br>07:00 – 17:00 Uhr</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Zertifizierung</div>
+            <div class="info-value">Innungsfachbetrieb<br>EN 1090</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <form>
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Max Mustermann" />
+          </div>
+          <div class="form-group">
+            <label>E-Mail</label>
+            <input type="email" placeholder="ihre@email.de" />
+          </div>
+          <div class="form-group">
+            <label>Leistung</label>
+            <select>
+              <option value="">Bitte wählen …</option>
+              <option>Metallbau</option>
+              <option>Schlosserarbeiten</option>
+              <option>Schweißarbeiten</option>
+              <option>Garagentor / Schiebtor</option>
+              <option>Zäune &amp; Geländer</option>
+              <option>Carport</option>
+              <option>Verglasung</option>
+              <option>Edelstahl / Aluminium</option>
+              <option>Reparatur</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Nachricht</label>
+            <textarea placeholder="Beschreiben Sie kurz Ihr Projekt …"></textarea>
+          </div>
+          <div class="form-footer">
+            <button type="submit" class="btn-primary">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              Anfrage senden
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="Metallwerkstatt Weidach" />
+      </div>
+      <p>Schlossermeisterbetrieb Florian Grießbach · individuell, verlässlich, flexibel · Feldkirchen-Westerham</p>
+    </div>
+    <div class="footer-col">
+      <h4>Leistungen</h4>
+      <ul>
+        <li><a href="#leistungen">Metallbau</a></li>
+        <li><a href="#leistungen">Schweißarbeiten</a></li>
+        <li><a href="#leistungen">Garagentore</a></li>
+        <li><a href="#leistungen">Zäune &amp; Geländer</a></li>
+        <li><a href="#leistungen">Carports</a></li>
+        <li><a href="#leistungen">Reparaturen</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Unternehmen</h4>
+      <ul>
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#galerie">Galerie</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="#">Weidach, 83620 Feldkirchen-Westerham</a></li>
+        <li><a href="#">info@metallwerkstatt-weidach.de</a></li>
+        <li><a href="#">Mo–Fr · 07:00–17:00</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Metallwerkstatt Weidach GmbH · Florian Grießbach</span>
+    <div class="footer-links">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function makeDraggable(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    let isDown = false, startX, scrollLeft;
+    el.addEventListener('mousedown', e => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; });
+    el.addEventListener('mouseleave', () => isDown = false);
+    el.addEventListener('mouseup',    () => isDown = false);
+    el.addEventListener('mousemove',  e => {
+      if (!isDown) return;
+      e.preventDefault();
+      el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5;
+    });
+  }
+  makeDraggable('galleryScroll');
+  makeDraggable('processScroll');
+
+  // Burger menu
+  const burger  = document.getElementById('burgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      mobileNav.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
