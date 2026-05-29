@@ -1089,20 +1089,24 @@
       width: 40px;
       height: 40px;
       padding: 4px;
-      background: none;
+      background: transparent;
       border: none;
       cursor: pointer;
       flex-shrink: 0;
+      transition: background 0.2s;
     }
 
     .burger span {
       display: block;
       height: 2px;
-      background: var(--text);
+      background: var(--dark);
       border-radius: 2px;
       transition: transform 0.3s, opacity 0.3s;
       transform-origin: center;
     }
+
+    .burger:hover span,
+    .burger.open span { background: var(--blue); }
 
     .burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
     .burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
