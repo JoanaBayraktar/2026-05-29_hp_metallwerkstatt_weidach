@@ -927,6 +927,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 20px;
       font-size: 0.8rem;
       color: rgba(255,255,255,0.22);
       font-family: var(--font-head);
@@ -940,13 +941,114 @@
     }
 
     .footer-bottom a:hover { color: var(--blue); }
-    .footer-links { display: flex; gap: 24px; }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px 24px;
+      min-width: 0;
+    }
 
     .footer-easteregg {
       color: rgba(255,255,255,0.16);
       font-size: 0.72rem;
       letter-spacing: 0.08em;
       text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .cookie-panel {
+      position: fixed;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      background: rgba(26,37,53,0.96);
+      border: 1px solid rgba(49,146,208,0.45);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+      color: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+    }
+
+    .cookie-panel.show { display: flex; }
+
+    .cookie-copy {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .cookie-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      border: 1px solid rgba(49,146,208,0.35);
+    }
+
+    .cookie-title {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .cookie-text {
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-link {
+      display: inline-flex;
+      align-items: center;
+      color: rgba(255,255,255,0.7);
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 11px 0;
+    }
+
+    .cookie-link:hover { color: var(--blue); }
+
+    .cookie-button {
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .cookie-button:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
     }
 
     /* ─── BURGER MENÜ ───────────────────────────────────── */
@@ -1037,7 +1139,17 @@
       .services-grid { grid-template-columns: 1fr; }
       .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
       .footer-top { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .footer-links { justify-content: flex-start; }
       .contact-info-block { grid-template-columns: 1fr; }
+      .cookie-panel {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .cookie-actions { justify-content: flex-start; width: 100%; }
     }
   </style>
 </head>
@@ -1507,14 +1619,28 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Metallwerkstatt Weidach GmbH · Florian Grießbach</span>
+    <span>© 2026 Metallwerkstatt Weidach GmbH · Florian Grießbach</span>
     <div class="footer-links">
-      <a href="#">Impressum</a>
+      <a href="impressum.html">Impressum</a>
       <span class="footer-easteregg">Protofotzellar</span>
-      <a href="#">Datenschutz</a>
+      <a href="datenschutz.html">Datenschutz</a>
     </div>
   </div>
 </footer>
+
+<div class="cookie-panel" id="cookiePanel" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+  <div class="cookie-copy">
+    <div class="cookie-icon"><i class="fa-solid fa-shield-halved"></i></div>
+    <div>
+      <div class="cookie-title">Werkstatt-Modus</div>
+      <div class="cookie-text">Wir nutzen nur technische Speicherfunktionen, damit diese Seite sauber läuft. Keine Analyse, kein Tracking, kein Datenhandel.</div>
+    </div>
+  </div>
+  <div class="cookie-actions">
+    <a class="cookie-link" href="datenschutz.html">Details</a>
+    <button class="cookie-button" id="cookieAccept" type="button">Passt</button>
+  </div>
+</div>
 
 <script>
   function makeDraggable(id) {
@@ -1546,6 +1672,16 @@
       mobileNav.classList.remove('open');
     });
   });
+
+  const cookiePanel = document.getElementById('cookiePanel');
+  const cookieAccept = document.getElementById('cookieAccept');
+  if (cookiePanel && cookieAccept && localStorage.getItem('mw-cookie-ok') !== 'yes') {
+    cookiePanel.classList.add('show');
+    cookieAccept.addEventListener('click', () => {
+      localStorage.setItem('mw-cookie-ok', 'yes');
+      cookiePanel.classList.remove('show');
+    });
+  }
 </script>
 
 </body>

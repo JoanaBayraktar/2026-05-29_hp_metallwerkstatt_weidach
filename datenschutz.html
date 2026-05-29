@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutz – Metallwerkstatt Weidach</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    @font-face {
+      font-family: 'Hind';
+      font-style: normal;
+      font-weight: 300 700;
+      font-display: swap;
+      src: url('https://fonts.gstatic.com/s/hind/v18/5aU69_a8oxmIdGh4BDGwgDJm_A.woff2') format('woff2');
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --border: #d4dde8;
+      --mid: #7a8fa6;
+      --text: #2c3540;
+      --dark: #1a2535;
+      --blue: #3192d0;
+      --blue-dark: #2478b5;
+      --font-head: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+      --font-body: 'Hind', sans-serif;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.68;
+      overflow-x: hidden;
+    }
+
+    header {
+      height: 72px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+    }
+
+    .logo img { height: 44px; width: auto; display: block; }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    nav a,
+    .legal-back,
+    .footer-links a,
+    .cookie-link {
+      font-family: var(--font-head);
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
+      transition: color 0.2s;
+    }
+
+    nav a:hover,
+    .legal-back:hover,
+    .footer-links a:hover,
+    .cookie-link:hover { color: var(--blue); }
+
+    .legal-hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 88px 48px 70px;
+    }
+
+    .legal-hero-inner,
+    .legal-content,
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--blue);
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-size: 0.82rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 30px;
+      height: 2px;
+      background: var(--blue);
+      display: block;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .legal-hero p {
+      max-width: 640px;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .legal-content {
+      padding: 72px 48px 92px;
+      display: grid;
+      gap: 34px;
+    }
+
+    .legal-block {
+      border-top: 1px solid var(--border);
+      padding-top: 28px;
+    }
+
+    h2 {
+      font-family: var(--font-head);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    p { margin-bottom: 12px; color: var(--text); }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    li { margin-bottom: 6px; }
+    a { color: var(--blue); }
+
+    .muted {
+      color: var(--mid);
+      font-size: 0.95rem;
+    }
+
+    .legal-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+      color: rgba(255,255,255,0.78);
+    }
+
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.28);
+      padding: 34px 48px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      font-family: var(--font-head);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px 24px;
+      min-width: 0;
+    }
+
+    .footer-links a { color: rgba(255,255,255,0.28); }
+
+    .footer-easteregg {
+      color: rgba(255,255,255,0.16);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      overflow-wrap: anywhere;
+    }
+
+    .cookie-panel {
+      position: fixed;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 18px 20px;
+      background: rgba(26,37,53,0.96);
+      border: 1px solid rgba(49,146,208,0.45);
+      box-shadow: 0 18px 60px rgba(0,0,0,0.28);
+      color: rgba(255,255,255,0.78);
+      backdrop-filter: blur(14px);
+    }
+
+    .cookie-panel.show { display: flex; }
+
+    .cookie-copy {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .cookie-icon {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--blue);
+      border: 1px solid rgba(49,146,208,0.35);
+    }
+
+    .cookie-title {
+      font-family: var(--font-head);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .cookie-text { font-size: 0.9rem; line-height: 1.55; }
+
+    .cookie-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .cookie-link {
+      color: rgba(255,255,255,0.7);
+      padding: 11px 0;
+    }
+
+    .cookie-button {
+      border: none;
+      cursor: pointer;
+      background: var(--blue);
+      color: var(--white);
+      font-family: var(--font-head);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+    }
+
+    .cookie-button:hover { background: var(--blue-dark); }
+
+    @media (max-width: 700px) {
+      header { padding: 0 20px; }
+      nav { gap: 16px; }
+      .legal-hero { padding: 64px 20px 54px; }
+      .legal-content { padding: 52px 20px 70px; }
+      footer { padding: 30px 20px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+      .footer-links { justify-content: flex-start; }
+      .cookie-panel {
+        left: 12px;
+        right: 12px;
+        bottom: 12px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .cookie-actions { justify-content: flex-start; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <img src="images/logo.png" alt="Metallwerkstatt Weidach" />
+    </a>
+    <nav>
+      <a href="index.html#leistungen">Leistungen</a>
+      <a href="index.html#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="legal-hero">
+      <div class="legal-hero-inner">
+        <div class="eyebrow">Datenschutz</div>
+        <h1>Datenschutz</h1>
+        <p>Diese Hinweise erklären, welche Daten beim Besuch dieser statischen Website verarbeitet werden.</p>
+        <a class="legal-back" href="index.html"><i class="fa-solid fa-arrow-left"></i> Zur Startseite</a>
+      </div>
+    </section>
+
+    <section class="legal-content">
+      <div class="legal-block">
+        <h2>Verantwortliche Stelle</h2>
+        <p>
+          Metallwerkstatt Weidach GmbH<br>
+          Weidach<br>
+          83620 Feldkirchen-Westerham<br>
+          E-Mail: <a href="mailto:info@metallwerkstatt-weidach.de">info@metallwerkstatt-weidach.de</a>
+        </p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Hosting und Server-Logfiles</h2>
+        <p>Beim Aufruf der Website verarbeitet der Hosting-Anbieter technisch notwendige Zugriffsdaten. Dazu können IP-Adresse, Zeitpunkt des Abrufs, aufgerufene Datei, übertragene Datenmenge, Browsertyp, Betriebssystem und Referrer gehören.</p>
+        <p class="muted">Die Verarbeitung erfolgt zur sicheren und stabilen Bereitstellung der Website.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Kontaktaufnahme</h2>
+        <p>Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir die von Ihnen übermittelten Angaben zur Bearbeitung Ihrer Anfrage und möglicher Anschlussfragen.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Cookies und lokale Speicherung</h2>
+        <p>Diese Website nutzt keine Analyse- oder Marketing-Cookies. Der Cookie-Hinweis speichert lediglich im Local Storage Ihres Browsers, dass Sie den Hinweis bestätigt haben.</p>
+        <ul>
+          <li>Name: <strong>mw-cookie-ok</strong></li>
+          <li>Zweck: Ausblenden des Cookie-Hinweises nach Bestätigung</li>
+          <li>Speicherdauer: bis zur Löschung durch den Browser oder durch Sie</li>
+        </ul>
+      </div>
+
+      <div class="legal-block">
+        <h2>Externe Schrift- und Icon-Dateien</h2>
+        <p>Für Schrift und Icons können Dateien von externen Anbietern wie Google Fonts und cdnjs geladen werden. Dabei kann Ihre IP-Adresse an die jeweiligen Anbieter übertragen werden, damit die Dateien an Ihren Browser ausgeliefert werden können.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Ihre Rechte</h2>
+        <p>Sie haben im Rahmen der gesetzlichen Voraussetzungen Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch. Außerdem können Sie sich bei einer zuständigen Datenschutzaufsichtsbehörde beschweren.</p>
+      </div>
+
+      <div class="legal-block">
+        <h2>Stand</h2>
+        <p>Mai 2026</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span>© 2026 Metallwerkstatt Weidach GmbH · Florian Grießbach</span>
+      <div class="footer-links">
+        <a href="impressum.html">Impressum</a>
+        <span class="footer-easteregg">Protofotzellar</span>
+        <a href="datenschutz.html">Datenschutz</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cookie-panel" id="cookiePanel" role="dialog" aria-live="polite" aria-label="Cookie-Hinweis">
+    <div class="cookie-copy">
+      <div class="cookie-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <div>
+        <div class="cookie-title">Werkstatt-Modus</div>
+        <div class="cookie-text">Wir nutzen nur technische Speicherfunktionen, damit diese Seite sauber läuft. Keine Analyse, kein Tracking, kein Datenhandel.</div>
+      </div>
+    </div>
+    <div class="cookie-actions">
+      <a class="cookie-link" href="datenschutz.html">Details</a>
+      <button class="cookie-button" id="cookieAccept" type="button">Passt</button>
+    </div>
+  </div>
+
+  <script>
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieAccept = document.getElementById('cookieAccept');
+    if (cookiePanel && cookieAccept && localStorage.getItem('mw-cookie-ok') !== 'yes') {
+      cookiePanel.classList.add('show');
+      cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('mw-cookie-ok', 'yes');
+        cookiePanel.classList.remove('show');
+      });
+    }
+  </script>
+</body>
+</html>
