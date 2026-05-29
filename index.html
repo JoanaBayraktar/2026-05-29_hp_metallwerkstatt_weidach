@@ -833,13 +833,6 @@
       line-height: 1.5;
     }
 
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
     .btn-whatsapp {
       display: inline-flex;
       align-items: center;
@@ -906,6 +899,8 @@
 
     .form-footer {
       display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
       justify-content: flex-end;
       margin-top: 28px;
     }
@@ -1172,6 +1167,7 @@
       .hero-title { font-size: 2.4rem; }
       .services-grid { grid-template-columns: 1fr; }
       .services-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .form-footer { justify-content: flex-start; }
       .footer-top { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; align-items: flex-start; }
       .footer-links { justify-content: flex-start; }
@@ -1570,12 +1566,6 @@
             <div class="info-value">Innungsfachbetrieb EXC2<br>EN 1090-2</div>
           </div>
         </div>
-        <div class="contact-actions">
-          <a class="btn-whatsapp is-disabled" href="#" aria-disabled="true">
-            <i class="fa-brands fa-whatsapp"></i>
-            WhatsApp folgt
-          </a>
-        </div>
       </div>
 
       <div class="contact-form">
@@ -1609,9 +1599,13 @@
             <textarea placeholder="Beschreiben Sie kurz Ihr Projekt …"></textarea>
           </div>
           <div class="form-footer">
+            <a class="btn-whatsapp is-disabled" href="#" aria-disabled="true">
+              <i class="fa-brands fa-whatsapp"></i>
+              Anfrage per WhatsApp
+            </a>
             <button type="submit" class="btn-primary">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              Anfrage senden
+              Anfrage per Mail
             </button>
           </div>
         </form>
